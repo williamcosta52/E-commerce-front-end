@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DarkPage from "./pages/DarkPage";
+import styled from "styled-components";
+import ExitPage from "./pages/ExitPage";
+import Home from "./pages/Home";
+import SignUp from "./pages/SignUp";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+	return (
+		<Container>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<DarkPage />} />
+					<Route path="/exit" element={<ExitPage />} />
+					<Route path="/home" element={<Home />} />
+					<Route path="/sign-up" element={<SignUp />} />
+				</Routes>
+			</BrowserRouter>
+		</Container>
+	);
 }
 
-export default App;
+const Container = styled.div`
+	width: 100%;
+	height: 100%;
+`;
