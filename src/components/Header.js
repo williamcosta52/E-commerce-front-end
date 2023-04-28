@@ -9,7 +9,7 @@ export default function Header(){
 }
 
 const HeaderPersonalizado = styled.header`
-height: 120px;
+height: 12vh;
 width: 100vw;
 background-color: #D9D9D9;
 `

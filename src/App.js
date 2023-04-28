@@ -6,6 +6,8 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import CategoryPage from "./pages/CategoryPage";
 import ItemPage from "./pages/ItemPage";
+import AddStockPage from "./pages/AddStockPage";
+import StockPage from "./pages/StockPage";
 
 export default function App() {
 	return (
@@ -18,6 +20,8 @@ export default function App() {
 					<Route path="/sign-up" element={<SignUp />} />
 					<Route path="/:category" element={<CategoryPage />} />
 					<Route path="/:category/:item" element={<ItemPage />} />
+					<Route path="/van/stock" element={<AddStockPage />} />
+					<Route path="/van" element={<StockPage/>} />
 				</Routes>
 			</BrowserRouter>
 		</Container>
