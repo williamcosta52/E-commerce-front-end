@@ -8,6 +8,7 @@ import CategoryPage from "./pages/CategoryPage";
 import ItemPage from "./pages/ItemPage";
 import AddStockPage from "./pages/AddStockPage";
 import StockPage from "./pages/StockPage";
+import LoginPage from "./pages/LoginPage";
 
 export default function App() {
 	return (
@@ -17,6 +18,7 @@ export default function App() {
 					<Route path="/" element={<DarkPage />} />
 					<Route path="/exit" element={<ExitPage />} />
 					<Route path="/home" element={<Home />} />
+					<Route path="/login" element={<LoginPage />} />
 					<Route path="/sign-up" element={<SignUp />} />
 					<Route path="/:category" element={<CategoryPage />} />
 					<Route path="/:category/:item" element={<ItemPage />} />
