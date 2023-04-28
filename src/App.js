@@ -12,12 +12,12 @@ export default function App() {
 		<Container>
 			<BrowserRouter>
 				<Routes>
-				{/*	<Route path="/" element={<DarkPage />} />
+					<Route path="/" element={<DarkPage />} />
 					<Route path="/exit" element={<ExitPage />} />
 					<Route path="/home" element={<Home />} />
-	<Route path="/sign-up" element={<SignUp />} />*/}
-					<Route path="/:category" element={<CategoryPage />}/>
-					<Route path="/:category/:item" element={<ItemPage />}/>
+					<Route path="/sign-up" element={<SignUp />} />
+					<Route path="/:category" element={<CategoryPage />} />
+					<Route path="/:category/:item" element={<ItemPage />} />
 				</Routes>
 			</BrowserRouter>
 		</Container>
