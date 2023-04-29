@@ -214,7 +214,7 @@ h2{
 }
 `
 
-const ContainerItem = styled.div `
+const ContainerItem = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
