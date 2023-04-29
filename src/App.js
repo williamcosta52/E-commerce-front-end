@@ -19,7 +19,7 @@ export default function App() {
 					<Route path="/exit" element={<ExitPage />} />
 					<Route path="/home" element={<Home />} />
 					<Route path="/login" element={<LoginPage />} />
-					<Route path="/sign-up" element={<SignUp />} />
+					<Route path="/signup" element={<SignUp />} />
 					<Route path="/:category" element={<CategoryPage />} />
 					<Route path="/:category/:item" element={<ItemPage />} />
 					<Route path="/van/stock" element={<AddStockPage />} />

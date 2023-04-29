@@ -13,7 +13,7 @@ export default function Home() {
 
     const [categorias, setCategorias] = useState([])
     const [estoque, setEstoque] = useState([])
-    const [flex, setFlex]=useState("none")
+    const [flex, setFlex] = useState("none")
 
 
     useEffect(() => {
@@ -34,9 +34,9 @@ export default function Home() {
         })
     }, [])
 
-    function mostrarCategorias(){
-        if (flex === "none"){
-        setFlex("flex")
+    function mostrarCategorias() {
+        if (flex === "none") {
+            setFlex("flex")
         } else {
             setFlex("none")
         }
@@ -50,7 +50,7 @@ export default function Home() {
                     <Título onClick={mostrarCategorias}>Categorias</Título>
                     <ListaCategorias flex={flex}>
                         {categorias.map((categoria, i) => (
-                           <Link to={`/${categoria.category}`}> <li key={i}>{categoria.category}</li></Link>
+                            <Link to={`/${categoria.category}`}> <li key={i}>{categoria.category}</li></Link>
                         ))}
                     </ListaCategorias>
                 </CategoriasContainer>
@@ -66,13 +66,13 @@ export default function Home() {
                         Todos os Itens
                     </Título>
                     <DisplayContainer>
-                    {estoque.map((item, i) => (
+                        {estoque.map((item, i) => (
                             <ItemCard key={i}><Link to={`/${item.category}/${item.name}`}>
                                 <h2>{item.name}</h2>
-                                <img src={item.image}/>
+                                <img src={item.image} />
                                 <p>R${item.price},00</p>
-                                </Link></ItemCard>
-                            
+                            </Link></ItemCard>
+
                         ))}
                     </DisplayContainer>
                 </TodoEstoqueContainer>

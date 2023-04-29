@@ -2,16 +2,21 @@ import styled from "styled-components";
 import BackgroundSign from "../constants/BackgroundSign";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+
+	const url = `http://localhost:5000`
 	const [name, setName] = useState([]);
 	const [email, setEmail] = useState([]);
 	const [password, setPassword] = useState([]);
 	const [confirmPassword, setConfirmPassword] = useState([]);
 	const [age, setAge] = useState([]);
+	const navigate = useNavigate()
 
-	function SignUp() {
-		const url = "localhost:5000/sign-up";
+	function SignUp(e) {
+		e.preventDefault()
+
 		const body = {
 			name: name,
 			email: email,
@@ -19,10 +24,13 @@ export default function SignUp() {
 			age: age,
 		};
 
-		axios
-			.post(url, body)
-			.then((r) => console.log(r))
-			.catch((e) => console.log(e));
+		const cadastro = axios.post(`${url}/signup`, body)
+		cadastro.then((res) => {
+				alert(res.data)
+				navigate("/login")
+			})
+			cadastro.catch((err) => {
+				alert(err.response)});
 	}
 
 	return (
