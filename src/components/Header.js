@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import logo from "../assets/logo.png";
 import van from "../assets/van.jpg";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+	const navigate = useNavigate();
+
 	return (
 		<HeaderStyled>
 			<Logo src={logo} alt="logo" />
 			<input placeholder="Vasculhar" />
-			<Cart src={van} alt="cart" />
+			<Cart onClick={() => navigate("/cart")} src={van} alt="cart" />
 		</HeaderStyled>
 	);
 }

@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import Header from "../components/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
