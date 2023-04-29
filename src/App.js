@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import CategoryPage from "./pages/CategoryPage";
 import ItemPage from "./pages/ItemPage";
+import CartPage from "./pages/CartPage";
 
 export default function App() {
 	return (
@@ -18,6 +19,7 @@ export default function App() {
 					<Route path="/sign-up" element={<SignUp />} />
 					<Route path="/:category" element={<CategoryPage />} />
 					<Route path="/:category/:item" element={<ItemPage />} />
+					<Route path="/cart" element={<CartPage/>}/>
 				</Routes>
 			</BrowserRouter>
 		</Container>
