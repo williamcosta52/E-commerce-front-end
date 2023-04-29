@@ -3,14 +3,14 @@ import logo from "../assets/logo.png"
 import login from "../assets/login.png"
 import van from "../assets/van.png"
 
-export default function Header(){
+export default function Header() {
     return (
-<HeaderPersonalizado>
-    <img src={logo}  alt=" Perigo Store logo"/>
-    <input placeholder="Vasculhar"/>
-    <img src={login} alt=" login icon"className="login-icon"/>
-    <img src={van} alt=" van icon"className="van-icon"/>
-</HeaderPersonalizado>
+        <HeaderPersonalizado>
+            <img src={logo} alt=" Perigo Store logo" />
+            <input placeholder="Vasculhar" />
+            <img src={login} alt=" login icon" className="login-icon" />
+            <img src={van} alt=" van icon" className="van-icon" />
+        </HeaderPersonalizado>
     )
 }
 
