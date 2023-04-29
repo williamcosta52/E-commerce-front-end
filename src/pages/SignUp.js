@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import BackgroundSign from "../constants/BackgroundSign";
 import { useState } from "react";
+import axios from "axios";
 
 export default function SignUp() {
 	const [name, setName] = useState([]);
