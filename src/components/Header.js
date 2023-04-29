@@ -4,25 +4,18 @@ import van from "../assets/van.jpg";
 
 export default function Header() {
 	return (
-		<Container>
-			<HeaderStyled>
-				<Logo src={logo} alt="logo" />
-				<input placeholder="Vasculhar" />
-				<Cart src={van} alt="cart" />
-			</HeaderStyled>
-		</Container>
+		<HeaderStyled>
+			<Logo src={logo} alt="logo" />
+			<input placeholder="Vasculhar" />
+			<Cart src={van} alt="cart" />
+		</HeaderStyled>
 	);
 }
-
-const Container = styled.div`
-	width: 100%;
-	height: 100%;
-	display: flex;
-	position: relative;
-`;
 const HeaderStyled = styled.div`
 	display: flex;
 	position: fixed;
+	left: 0;
+	top: 0;
 	align-items: center;
 	justify-content: center;
 	width: 100%;

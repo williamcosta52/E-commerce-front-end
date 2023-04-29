@@ -53,7 +53,6 @@ export default function Home() {
 						))}
 					</ListaCategorias>
 				</CategoriasContainer>
-
 				<TodoEstoqueContainer>
 					<Título>Todos os Itens</Título>
 					<DisplayContainer>
@@ -75,7 +74,7 @@ export default function Home() {
 
 const PageContainer = styled.div`
 	background-color: #808080;
-	width: 100vw;
+	width: 100%;
 	height: 100rem;
 	display: flex;
 	flex-direction: column;
@@ -87,6 +86,7 @@ const MainHome = styled.main`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-top: 120px;
 `;
 
 const ListaCategorias = styled.ul`
