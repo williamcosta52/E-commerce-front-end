@@ -20,7 +20,7 @@ export default function AddStockPage(){
             alert(res.data)
             setForm({name: "", category: "", description:"", price:"", quantity: "", image:""})
         })
-        enviar.catch((err)=> alert(err.response.data))
+        enviar.catch((err)=> alert(err.response))
     }
     
     function cancelarItem(){

@@ -35,7 +35,7 @@ export default function ItemPage() {
                 </ContainerImagem>
                 <ContainerDetalhes>
                     <div>
-                    <h1><Link to={`/${categoria}`}>{categoria}</Link><br/>{itemBuscado.name}</h1>
+                    <h1><Link to={`/home`}>{categoria}</Link><br/>{itemBuscado.name}</h1>
                     </div>
                     <h2>RS{itemBuscado.price},00</h2>
                         <p>{itemBuscado.description}
@@ -49,6 +49,7 @@ export default function ItemPage() {
 
 const Main = styled.div`
 background-color: #808080;
+margin-top: 120px;
 display: flex;
 justify-content: center;
 padding-top: 30px;

@@ -47,7 +47,7 @@ export default function Home() {
 					<Título onClick={mostrarCategorias}>Categorias</Título>
 					<ListaCategorias flex={flex}>
 						{categorias.map((categoria, i) => (
-							<Link to={`/${categoria.category}`}> <li key={i}>{categoria.category}</li></Link>
+							<Link to={`/categoria/${categoria.category}`}> <li key={i}>{categoria.category}</li></Link>
 						))}
 					</ListaCategorias>
 				</CategoriasContainer>

@@ -13,7 +13,7 @@ export default function CategoryPage() {
     const [itensPorCategoria, setItensPorCategoria] = useState([])
 
     useEffect(() => {
-        const carregarCategoria = axios.get(`${url}/${categoria}`)
+        const carregarCategoria = axios.get(`${url}/categoria/${categoria}`)
         carregarCategoria.then((res) => {
             console.log(categoria)
             setItensPorCategoria(res.data)
