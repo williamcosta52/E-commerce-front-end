@@ -10,7 +10,7 @@ export default function CartPage() {
     return (
         <Container>
 
-            <Header></Header>
+            <Header/>
             <CartBox>
                 <div className="top">
                     <img src={van} alt=" van icon" className="van-icon" />
