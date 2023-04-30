@@ -8,7 +8,7 @@ export default function DarkPage() {
 		navigate("/exit");
 	}
 	function enterStore() {
-		navigate("/home");
+		navigate("/login");
 	}
 
 	return (
@@ -24,9 +24,8 @@ export default function DarkPage() {
 
 const Dark = styled.div`
 	background-color: #000000;
-	width: 1920px;
-	height: 880px;
 	display: flex;
+	height: 100vh;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -40,6 +39,7 @@ const Dark = styled.div`
 		font-family: "Jua", sans-serif;
 	}
 `;
+
 const DivButtons = styled.div`
 	display: flex;
 	button {

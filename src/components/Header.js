@@ -2,19 +2,21 @@ import styled from "styled-components"
 import logo from "../assets/logo.png"
 import login from "../assets/login.png"
 import van from "../assets/van.png"
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+    const navigate = useNavigate();
     return (
-        <HeaderPersonalizado>
+        <HeaderStyled>
             <img src={logo} alt=" Perigo Store logo" />
             <input placeholder="Vasculhar" />
             <img src={login} alt=" login icon" className="login-icon" />
-            <img src={van} alt=" van icon" className="van-icon" />
-        </HeaderPersonalizado>
+            <img src={van} onClick={() => navigate("/cart")}alt=" van icon" className="van-icon" />
+        </HeaderStyled>
     )
 }
 
-const HeaderPersonalizado = styled.header`
+const HeaderStyled = styled.header`
 height: 120px;
 width: 100vw;
 display:flex;
