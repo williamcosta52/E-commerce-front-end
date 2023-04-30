@@ -1,12 +1,24 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom"
 import Header from "../components/Header"
+import axios from "axios";
+import { useState, useEffect } from "react";
 import van from "../assets/van.png"
 export default function CartPage() {
     const navigate = useNavigate();
+    const url = `http://localhost:5000`;
     function Navigate() {
         navigate("/sign-up")
     }
+    const [estoque, setEstoque] = useState([]);
+    
+    useEffect(() => {
+        const carregarEstoque = axios.get(`${url}/van/stock`);
+		carregarEstoque.then((res) => {            
+			setEstoque(res.data);
+		});
+    }, []);
+    let totalValue=estoque.reduce((accumulator,currentValue)=>accumulator+(currentValue.price*currentValue.quantity),0)
     return (
         <Container>
 
@@ -17,22 +29,25 @@ export default function CartPage() {
                     <div className="title-top">Itens retirados da van</div>
                 </div>
                 <ProductBox>
-                    <div className="product">
-                        <div className="left">
-                            <div>Nome do produto</div>
-                            <img src={van} onClick={Navigate} alt="product image" />
+                    {estoque.map((item,i)=>
+                    (<Product key={i}>
+                        <div key={item.price} className="left">
+                            <div key={item.id}>{item.name}</div>
+                            <img key={item.quantity} src={item.image}  alt={item.name} />
                         </div>
-                        <div className="right">
-                            <div>Preço R$:25,00</div>
-                            <div>Qntde:2</div>
+                        <div key={item.description}className="right">
+                            <div key={item.image}>Preço R$:{item.price}</div>
+                            <div key={item.name}>Quantidade:{item.quantity}</div>
                         </div>
-                    </div>
+                    </Product>))
+                    }
+                   
 
 
                 </ProductBox>
-                <ProductsValue> Valor total: R$ 50,00</ProductsValue>
+                <ProductsValue> Valor total: R$ {totalValue}</ProductsValue>
                 <div className="button buy">Comprar</div>
-                <div className="button browse">Pegar mais itens</div>
+                <div className="button browse"onClick={() => navigate("/home")}>Pegar mais itens</div>
 
             </CartBox>
         </Container>
@@ -96,7 +111,7 @@ display:flex;
 flex-direction: column;
 background-color: white;
 overflow-y:scroll;
-.product{
+/* .product{
     width: 100%;
     display: flex;
     background-color: white;
@@ -114,7 +129,7 @@ overflow-y:scroll;
 }
 .right{
     width: 50%;    
-}
+} */
 
 `
 const ProductsValue = styled.div`
@@ -125,4 +140,23 @@ const ProductsValue = styled.div`
     align-items: center;
     justify-content: center;
     border-top:1px solid  lightgrey ;
+`
+const Product = styled.div`
+width: 100%;
+    display: flex;
+    background-color: white;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    .left{
+    width: 50%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;    
+}
+.left>img{
+    width: 50px;
+}
+.right{
+    width: 50%;    
+}
 `
