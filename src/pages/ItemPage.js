@@ -35,7 +35,7 @@ export default function ItemPage() {
                 </ContainerImagem>
                 <ContainerDetalhes>
                     <div>
-                    <h1><Link to={`/home`}>{categoria}</Link><br/>{itemBuscado.name}</h1>
+                    <h1><Link to={`/categoria/${categoria}`}> {categoria}</Link><br/>{itemBuscado.name}</h1>
                     </div>
                     <h2>RS{itemBuscado.price},00</h2>
                         <p>{itemBuscado.description}
