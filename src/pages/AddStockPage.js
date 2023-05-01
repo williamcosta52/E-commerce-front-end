@@ -59,7 +59,7 @@ export default function AddStockPage(){
 
 <InputDes>
 <label htmlFor="description">Descrição do Item</label>
-        <input
+        <textarea
         id="description"
         minLength={10}
         name="description"
@@ -129,6 +129,7 @@ height: 80%;
 display: flex;
 flex-direction: column;
 align-items: center;
+margin-top: 120px;
 h1{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -168,7 +169,7 @@ flex-direction: column;
 label{
     height: 25px;
 }
-input{
+textarea{
     height: 100px;
 }
 `
