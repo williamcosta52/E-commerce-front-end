@@ -8,10 +8,10 @@ export default function Header() {
     const navigate = useNavigate();
     return (
         <HeaderStyled>
-            <img src={logo} alt=" Perigo Store logo" />
+            <img src={logo} onClick={() => navigate("/home")} alt=" Perigo Store logo" />
             <input placeholder="Vasculhar" />
-            <img src={login} alt=" login icon" className="login-icon" />
-            <img src={van} onClick={() => navigate("/cart")}alt=" van icon" className="van-icon" />
+            <img src={login} onClick={() => navigate("/login")} alt=" login icon" className="login-icon" />
+            <img src={van} onClick={() => navigate("/cart")} alt=" van icon" className="van-icon" />
         </HeaderStyled>
     )
 }

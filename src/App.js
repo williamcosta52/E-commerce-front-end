@@ -10,12 +10,16 @@ import CartPage from "./pages/CartPage";
 import AddStockPage from "./pages/AddStockPage";
 import StockPage from "./pages/StockPage";
 import LoginPage from "./pages/LoginPage";
+import UserProvider from "./contexts/UserContexts"
 
 
 export default function App() {
+	const lsSessao = JSON.parse(localStorage.getItem("sessao"))
+
 	return (
 		<Container>
 			<BrowserRouter>
+			<UserProvider>
 				<Routes>
 					<Route path="/" element={<DarkPage />} />
 					<Route path="/exit" element={<ExitPage />} />
@@ -27,8 +31,8 @@ export default function App() {
 					<Route path="/cart" element={<CartPage/>}/>
 					<Route path="/van/stock" element={<AddStockPage />} />
 					<Route path="/van" element={<StockPage/>} />
-
 				</Routes>
+				</UserProvider>
 			</BrowserRouter>
 		</Container>
 	);

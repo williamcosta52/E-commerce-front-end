@@ -1,12 +1,14 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import BackgroundSign from "../constants/BackgroundSign";
+import { UserContext } from "../contexts/UserContexts";
 
 export default function LoginPage() {
 	const url = `http://localhost:5000`;
-
+	const { setSessao } = useContext(UserContext)
+	const {sessao} = useContext(UserContext)
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -18,6 +20,10 @@ export default function LoginPage() {
 		const login = axios.post(`${url}/login`, body);
 		login.then((res) => {
 			console.log(res.data);
+			const {name, token} = res.data
+			setSessao({name, token})
+			localStorage.setItem("sessao", JSON.stringify({name, token}))
+			console.log({sessao})
 			setEmail("");
 			setPassword("");
 			navigate("/home");

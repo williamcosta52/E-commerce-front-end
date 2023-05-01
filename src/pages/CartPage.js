@@ -2,18 +2,32 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom"
 import Header from "../components/Header"
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import van from "../assets/van.png"
+import { UserContext } from "../contexts/UserContexts";
+
+
+
+
 export default function CartPage() {
     const navigate = useNavigate();
     const url = `http://localhost:5000`;
+
+
+
+    const { sessao } = useContext(UserContext)
+
     function Navigate() {
         navigate("/sign-up")
     }
     const [estoque, setEstoque] = useState([]);
     
     useEffect(() => {
-        const carregarEstoque = axios.get(`${url}/van/stock`);
+        const config = { headers: { Authorization: `Bearer ${sessao.token}` } }
+        console.log(sessao)
+        console.log(sessao.token)
+        console.log(config)
+        const carregarEstoque = axios.get(`${url}/home/cart/show`, config);
 		carregarEstoque.then((res) => {            
 			setEstoque(res.data);
 		});

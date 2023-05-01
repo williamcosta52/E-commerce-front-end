@@ -2,13 +2,16 @@ import axios from "axios"
 import styled from "styled-components"
 import Header from "../components/Header"
 import { Link, useParams } from "react-router-dom"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useEffect } from "react"
+import { UserContext } from "../contexts/UserContexts"
 
 
 export default function ItemPage() {
     const {category, item} = useParams()
     const url = `http://localhost:5000`
+
+    const { sessao } = useContext(UserContext)
 
 
     const [categoria, setCategoria]=useState(category)
@@ -25,6 +28,21 @@ export default function ItemPage() {
         })
     }, [])
 
+function addItem(item){
+    if (sessao === null) {
+        return alert("Você precisa fazer login para adicionar itens ao carrinho")
+    } else {
+    const config = { headers: { Authorization: `Bearer ${sessao.token}` } }
+
+    const adicionarItem = axios.post(`${url}/home/cart`, item, config)
+    adicionarItem.then((res) => {
+console.log(res.data)
+alert(res.data)
+    })
+    adicionarItem.catch((err)=> {
+        console.log(err.response)
+    })
+}}
 
     return (
         <>
@@ -40,7 +58,7 @@ export default function ItemPage() {
                     <h2>RS{itemBuscado.price},00</h2>
                         <p>{itemBuscado.description}
                         </p>
-                    <button>Adicionar ao carrinho</button>
+                    <button onClick={()=>addItem(itemBuscado)}>Adicionar ao carrinho</button>
                 </ContainerDetalhes>
             </Main>
         </>
