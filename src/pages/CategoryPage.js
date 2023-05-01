@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Header from "../components/Header";
+import ItemCard from "../components/ItemCard";
 
 export default function CategoryPage() {
 
@@ -34,12 +35,10 @@ export default function CategoryPage() {
                 <ContainerDosItens>
 
                     {itensPorCategoria.map((item, i) => (
-                        <Link to={`/${categoria}/${item.name}`} >
-                            <ItemContainer key={i}>
-                                <div><h2>{item.name}</h2></div>
-                                <img src={item.image} />
-                                <p>R${item.price},00</p>
-                            </ItemContainer>  </Link>
+                        <ItemCard category={categoria}
+                            name={item.name}
+                            image={item.image}
+                            price={item.price} />
                     ))}
                 </ContainerDosItens>
             </Main>
@@ -51,6 +50,7 @@ const Main = styled.main`
 background-color: #808080;
 width: 100vw;
 height: 100vh;
+margin-top: 120px;
 padding-top: 25px;
 `
 
@@ -74,28 +74,4 @@ justify-content: space-evenly;
 background-color:#808080;
 flex-wrap: wrap;
 padding-top: 15px;
-`
-const ItemContainer = styled.div`
-background-color: #D9D9D9;
-display: flex;
-flex-direction: column;
-align-items: center;
-height: 300px;
-width: 200px;
-justify-content: space-evenly;
-    div{
-        width: 90%;
-        height: 26px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    h2, p{
-        color: black;
-        font-weight: 600;
-    }
-    img {
-        max-height: 80%;
-        max-width: 90%;
-    }
 `

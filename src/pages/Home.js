@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import ItemCard from "../components/ItemCard";
 
 //COLOCA AKI
 
@@ -64,18 +65,13 @@ export default function Home() {
 					</Título>
 					<DisplayContainer>
 						{estoque.map((item, i) => (
-							<ContainerItem>
-								<ItemCard key={i}><Link to={`/${item.category}/${item.name}`}>
-
-
-
-									<img src={item.image} />
-									<DivNome><h2>{item.name}</h2></DivNome>
-
-								</Link>
-								</ItemCard>
-								<p>R${item.price},00</p>
-							</ContainerItem>
+							
+								<ItemCard key={i}
+								category={item.category} 
+								image={item.image}
+								name={item.name}
+								price={item.price}/>
+						
 
 						))}
 					</DisplayContainer>
@@ -147,7 +143,7 @@ const DisplayContainer = styled.div`
 	justify-content: space-around;
 `;
 
-const ItemCard = styled.div`
+/*const ItemCard = styled.div`
 background-color: beige ;
 min-height: 260px;
 max-height: 260px;
@@ -186,7 +182,7 @@ p{
     width: 100%;
     background-color: white;
 }
-`
+`*/
 const DivNome = styled.div`
 backdrop-filter: (15px);
 height: 12%;
@@ -212,7 +208,7 @@ h2{
     font-weight: 800;
 }
 `
-
+/*
 const ContainerItem = styled.div`
 display: flex;
 flex-direction: column;
@@ -221,4 +217,4 @@ p{
     color: white;
     font-weight: 800;
 }
-`
+`*/
