@@ -53,10 +53,13 @@ alert(res.data)
                 </ContainerImagem>
                 <ContainerDetalhes>
                     <div>
-                    <h1><Link to={`/categoria/${categoria}`}> {categoria}</Link><br/>{itemBuscado.name}</h1>
+                    <h1>
+                        <Link to={`/categoria/${categoria}`}> {categoria}</Link>
+                        <br/>{itemBuscado.name}</h1>
                     </div>
                     <h2>RS{itemBuscado.price},00</h2>
-                        <p>{itemBuscado.description}
+                        <p>
+                            {itemBuscado.description}
                         </p>
                     <button onClick={()=>addItem(itemBuscado)}>Adicionar ao carrinho</button>
                 </ContainerDetalhes>
@@ -66,7 +69,7 @@ alert(res.data)
 }
 
 const Main = styled.div`
-background-color: #808080;
+background-color: gray;
 margin-top: 120px;
 display: flex;
 justify-content: center;
@@ -100,16 +103,19 @@ div{
 }
 h1{
     font-size: 28px;
+    color: white;
 }
 h2{
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 20px;
     font-weight: 700;
+    color: white;
 }
 p{
     font-size: 18px;
     font-weight: 500;
+    color: white;
 }
 button{
     width: 30%;
