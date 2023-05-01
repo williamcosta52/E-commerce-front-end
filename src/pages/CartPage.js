@@ -24,15 +24,25 @@ export default function CartPage() {
     
     useEffect(() => {
         const config = { headers: { Authorization: `Bearer ${sessao.token}` } }
-        console.log(sessao)
-        console.log(sessao.token)
-        console.log(config)
         const carregarEstoque = axios.get(`${url}/home/cart/show`, config);
 		carregarEstoque.then((res) => {            
 			setEstoque(res.data);
+            console.log(res.data)
 		});
-    }, []);
+    }, [estoque]);
     let totalValue=estoque.reduce((accumulator,currentValue)=>accumulator+(currentValue.price*currentValue.quantity),0)
+
+function tirarItem(id){
+    const config = { headers: { Authorization: `Bearer ${sessao.token}` } }
+    const deletarItem = axios.delete(`${url}/home/cart/delete/${id}`, config)
+    deletarItem.then((res)=> {
+        alert(res.data)
+    })
+    deletarItem.catch((err)=> {
+        console.log(err.response.data)
+    })
+}
+
     return (
         <Container>
 
@@ -45,17 +55,16 @@ export default function CartPage() {
                 <ProductBox>
                     {estoque.map((item,i)=>
                     (<Product key={i}>
-                        <div key={item.price} className="left">
-                            <div key={item.id}>{item.name}</div>
-                            <img key={item.quantity} src={item.image}  alt={item.name} />
+                        <div className="left">
+                            <div ><h2>{item.name}</h2></div>
+                            <img  src={item.image}  alt={item.name} />
                         </div>
-                        <div key={item.description}className="right">
-                            <div key={item.image}>Preço R$:{item.price}</div>
-                            <div key={item.name}>Quantidade:{item.quantity}</div>
+                        <div className="right">
+                            <div >Preço R$:{item.price},00</div>
+                            <div onClick={() => tirarItem(item._id)}>Tirar item do carrinho</div>
                         </div>
                     </Product>))
                     }
-                   
 
 
                 </ProductBox>
@@ -80,6 +89,7 @@ const CartBox = styled.div`
 width: 60%;
 height: 60%;
 display: flex;
+margin: auto;
 flex-direction: column;
 align-items: center;
 background:yellow;
@@ -125,26 +135,6 @@ display:flex;
 flex-direction: column;
 background-color: white;
 overflow-y:scroll;
-/* .product{
-    width: 100%;
-    display: flex;
-    background-color: white;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-.left{
-    width: 50%;
-    display:flex;
-    flex-direction: column;
-    align-items: center;    
-}
-.left>img{
-    width: 50px;
-}
-.right{
-    width: 50%;    
-} */
-
 `
 const ProductsValue = styled.div`
     width: 80%;
@@ -157,20 +147,32 @@ const ProductsValue = styled.div`
 `
 const Product = styled.div`
 width: 100%;
+border-bottom: 1px solid grey;
+min-height: 150px;
     display: flex;
-    background-color: white;
+    background-color: plum;//white;
+    align-items: center;
     margin-bottom: 10px;
     margin-top: 10px;
     .left{
+        height: 100%;
+        background-color: red;
     width: 50%;
     display:flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center; 
+    justify-content: space-evenly;
 }
-.left>img{
-    width: 50px;
+img{
+    height: 50%;
 }
 .right{
+    display:flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: space-evenly;
+    background-color: aqua;
+    height: 100%;
     width: 50%;    
 }
 `
