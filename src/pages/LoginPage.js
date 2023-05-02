@@ -6,7 +6,8 @@ import BackgroundSign from "../constants/BackgroundSign";
 import { UserContext } from "../contexts/UserContexts";
 
 export default function LoginPage() {
-	const url = `http://localhost:5000`;
+	const url = process.env.REACT_APP_API_URL
+	console.log("Aaa")
 	const { setSessao } = useContext(UserContext)
 	const {sessao} = useContext(UserContext)
 	const navigate = useNavigate();
