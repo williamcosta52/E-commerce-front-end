@@ -19,14 +19,34 @@ export default function ItemCard(props) {
     )
 }
 
+const ContainerItem = styled.div`
+display: flex;
+flex-direction: column;
+height: 380px;
+width: 200px;
+border-radius: 16px;
+margin-left: 10px;
+margin-right: 10px;
+margin-bottom: 30px;
+background-color: white;
+align-items: center;
+transition-duration: 0.5s;
+p{
+    color: black;
+    font-weight: 800;
+    font-size: 25px;
+    z-index: 2;
+}
+&:hover {
+      border: 3px solid red;
+      scale: 1.1;
+    }
+`
 
 const ItemCardi = styled.div`
 background-color: beige ;
-min-height: 260px;
-max-height: 260px;
-max-width: 220px;
-min-width: 220px;
-margin-top: 10px;
+width: 100%;
+height: 100%;
 margin-bottom: 10px;
 border-radius: 18px;
 overflow-x: hidden;
@@ -35,10 +55,6 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 position: relative;
-transition-duration: 0.5s;
-&:hover {
-    scale: 1.1;
-  }
 a{
     width: 100%;
     height: 100%;
@@ -52,6 +68,7 @@ justify-content: center;
 }
 img{
     height: 100%;
+    
 }
 p{
     margin-top: -3px;
@@ -62,15 +79,7 @@ p{
 `
 
 
-const ContainerItem = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-p{
-    color: white;
-    font-weight: 800;
-}
-`
+
 const DivNome = styled.div`
 backdrop-filter: (15px);
 height: 12%;

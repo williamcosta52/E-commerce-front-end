@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import ItemCard from "../components/ItemCard";
 
 //COLOCA AKI
 
@@ -31,21 +32,19 @@ export default function Home() {
 		});
 	}, []);
 
-	function mostrarCategorias() {
-		if (flex === "none") {
-			setFlex("flex");
-		} else {
-			setFlex("none");
-		}
-	}
 
 	return (
 		<PageContainer>
-			<Header />
+			<HeaderHome>
+			<ion-icon name="person-outline"></ion-icon>
+				<h1>PERIGO STORE</h1>
+				<ion-icon name="cart-outline"></ion-icon>
+			</HeaderHome>
+
+
 			<MainHome>
 				<CategoriasContainer>
-					<Título onClick={mostrarCategorias}>Categorias</Título>
-					<ListaCategorias flex={flex}>
+					<ListaCategorias>
 						{categorias.map((categoria, i) => (
 							<Link to={`/categoria/${categoria.category}`}> <li key={i}>{categoria.category}</li></Link>
 						))}
@@ -64,18 +63,11 @@ export default function Home() {
 					</Título>
 					<DisplayContainer>
 						{estoque.map((item, i) => (
-							<ContainerItem>
-								<ItemCard key={i}><Link to={`/${item.category}/${item.name}`}>
-
-
-
-									<img src={item.image} />
-									<DivNome><h2>{item.name}</h2></DivNome>
-
-								</Link>
-								</ItemCard>
-								<p>R${item.price},00</p>
-							</ContainerItem>
+							<ItemCard key={i}
+							category={item.category}
+							name={item.name}
+							price={item.price}
+							image={item.image}/>
 
 						))}
 					</DisplayContainer>
@@ -85,49 +77,90 @@ export default function Home() {
 	);
 }
 
+
+const HeaderHome = styled.header`
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+height: 100px;
+width: 100vw;
+background-color: black;
+border-bottom: 2px solid white;
+h1{
+	color: white;
+	font-size: 60px;
+	font-weight: 800;
+	transition-duration: 0.5s;
+	&:hover {
+      scale: 1.2;
+	  color: red;
+    }
+
+}
+ion-icon{
+	color: white;
+	font-size: 50px;
+	transition-duration: 0.5s;
+	&:hover {
+      scale: 1.3;
+	  color: red;
+    }
+}
+`
+
 const PageContainer = styled.div`
-	background-color: #808080;
+		background-color: black;
 	width: 100%;
 	height: 100rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	font-family: 'Castoro Titling', cursive;
+font-family: 'IBM Plex Sans Arabic', sans-serif;
 `;
 
 const MainHome = styled.main`
-	width: 60%;
+	width: 100%;
+background-color: black;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 120px;
-`;
-
-const ListaCategorias = styled.ul`
-	display: ${(props) => props.flex};
-	justify-content: center;
-	flex-wrap: wrap;
-	li {
-		display: flex;
-		height: 40px;
-		min-width: 360px;
-		margin-left: 10px;
-		margin-right: 10px;
-		margin-top: 5px;
-		margin-bottom: 5px;
-		background-color: #d9d9d9;
-		align-items: center;
-		justify-content: center;
-	}
 `;
 
 const CategoriasContainer = styled.div`
-	width: 80%;
+	width: 100%;
+	height: 100px;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	overflow-x: auto;
 `;
+
+const ListaCategorias = styled.ul`
+	display: flex;
+	justify-content: space-around;
+	li {
+		color: white;
+		display: flex;
+		height: 100%;
+		min-width: 360px;
+		background-color: black;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid white;
+		font-weight: 500;
+	font-family: 'Castoro Titling', cursive;
+font-family: 'IBM Plex Sans Arabic', sans-serif;
+&:hover {
+      border: 2px solid red;
+    }
+	}
+`;
+
+
 
 const Título = styled.h1`
 	align-self: center;
+	color: white;
 	justify-self: center;
 	font-weight: 800;
 	margin-bottom: 25px;
@@ -147,7 +180,7 @@ const DisplayContainer = styled.div`
 	justify-content: space-around;
 `;
 
-const ItemCard = styled.div`
+/*const ItemCard = styled.div`
 background-color: beige ;
 min-height: 260px;
 max-height: 260px;
@@ -186,7 +219,7 @@ p{
     width: 100%;
     background-color: white;
 }
-`
+`*/
 const DivNome = styled.div`
 backdrop-filter: (15px);
 height: 12%;
@@ -215,6 +248,7 @@ h2{
 
 const ContainerItem = styled.div`
 display: flex;
+height: 200px;
 flex-direction: column;
 align-items: center;
 p{
