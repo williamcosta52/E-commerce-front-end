@@ -27,12 +27,12 @@ export default function CartPage() {
         const carregarEstoque = axios.get(`${url}/home/cart/show`, config);
 		carregarEstoque.then((res) => {            
 			setEstoque(res.data);
-            console.log(res.data)
 		});
     }, [estoque]);
     let totalValue=estoque.reduce((accumulator,currentValue)=>accumulator+(currentValue.price*currentValue.quantity),0)
 
 function tirarItem(id){
+
     const config = { headers: { Authorization: `Bearer ${sessao.token}` } }
     const deletarItem = axios.delete(`${url}/home/cart/delete/${id}`, config)
     deletarItem.then((res)=> {
