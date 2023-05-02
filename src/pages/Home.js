@@ -151,6 +151,7 @@ const ListaCategorias = styled.ul`
 	display: flex;
 	justify-content: space-around;
 	li {
+		transition-duration: 0.5s;
 		color: white;
 		display: flex;
 		height: 100%;
@@ -164,6 +165,7 @@ const ListaCategorias = styled.ul`
 font-family: 'IBM Plex Sans Arabic', sans-serif;
 &:hover {
       border: 2px solid red;
+	  scale: 1.2;
     }
 	}
 `;
