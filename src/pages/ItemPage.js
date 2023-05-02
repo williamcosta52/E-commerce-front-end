@@ -148,8 +148,36 @@ const CategoriasContainer = styled.div`
 	height: 100px;
 	display: flex;
 	flex-direction: row;
-	overflow-x: auto;
+    overflow-x: auto;
+	overflow-y: hidden;
+	::-webkit-scrollbar {
+  width: 12px;
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #000000;
+  border: 1px solid #FFFFFF;
+}
+::-webkit-scrollbar-track:hover {
+  background-color: #7C1E1E;
+}
+::-webkit-scrollbar-track:active {
+  background-color: #881A1A;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #000000;
+  border: 1px solid #FFFFFF;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #000000;
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: #000000;
+}
 `;
+
 
 const ListaCategorias = styled.ul`
 	display: flex;
