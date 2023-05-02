@@ -115,7 +115,7 @@ export default function AddStockPage(){
 }
 
 const PageContainer = styled.div`
-background-color: #808080;
+background-color: black;
 width: 100vw;
 height: 100vh;
 display: flex;
@@ -128,8 +128,10 @@ width: 60%;
 height: 80%;
 display: flex;
 flex-direction: column;
+background-color: white;
+border-radius: 20px;
 align-items: center;
-margin-top: 120px;
+margin-top: 80px;
 h1{
     margin-top: 10px;
     margin-bottom: 10px;

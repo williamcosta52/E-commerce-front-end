@@ -2,20 +2,20 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export default function ItemCard(props) {
-    const {key, category, name, price, image} = props
+    const { key, category, name, price, image } = props
     return (
         <ContainerItem>
-        <ItemCardi key={key}><Link to={`/${category}/${name}`}>
+            <ItemCardi key={key}><Link to={`/${category}/${name}`}>
 
 
 
-            <img src={image} />
-            <DivNome><h2>{name}</h2></DivNome>
+                <img src={image} />
+                <DivNome><h2>{name}</h2></DivNome>
 
-        </Link>
-        </ItemCardi>
-        <p>R${price},00</p>
-    </ContainerItem>
+            </Link>
+            </ItemCardi>
+            <p>R${price},00</p>
+        </ContainerItem>
     )
 }
 

@@ -41,7 +41,7 @@ height: 100px;
 width: 100vw;
 background-color: black;
 border-bottom: 2px solid white;
-background-image: url(https://st4.depositphotos.com/9147252/24037/v/450/depositphotos_240371772-stock-illustration-vintage-black-background-floral-elements.jpg);
+
 h1{
 	color: white;
 	font-size: 60px;

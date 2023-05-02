@@ -15,7 +15,7 @@ export default function StockPage(){
     )
 }
 const PageContainer = styled.div`
-background-color: #808080;
+background-color: black;
 width: 100vw;
 height: 100vh;
 display: flex;
@@ -29,13 +29,22 @@ display: flex;
 flex-direction: column;
 justify-content: space-evenly;
 align-items: center;
-background-color: #808080;
+background-color: black;
+
 a{
+    background-color: black;
     width: 50%;
     height: 20%;
-    background-color: #D9D9D9;
+    border: 1px solid white;
+    font-size: 25px;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition-duration: 0.5s;
+    &:hover {
+      border: 2px solid red;
+	  scale: 1.2;
+    }
 }
 `
