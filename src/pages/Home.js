@@ -8,7 +8,7 @@ import ItemCard from "../components/ItemCard";
 //COLOCA AKI
 
 export default function Home() {
-	const url = `http://localhost:5000`;
+	const url = process.env.REACT_APP_API_URL
 
 	const [categorias, setCategorias] = useState([]);
 	const [estoque, setEstoque] = useState([]);

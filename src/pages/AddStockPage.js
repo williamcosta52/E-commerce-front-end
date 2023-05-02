@@ -4,8 +4,7 @@ import { useState } from "react"
 import axios from "axios"
 
 export default function AddStockPage(){
-    const url = `http://localhost:5000`
-
+    const url = process.env.REACT_APP_API_URL
     const [form, setForm] = useState({name: "", category: "", description:"", price:"", quantity: "", image:""})
 
     function handleForm(e){

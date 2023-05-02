@@ -9,7 +9,7 @@ import { UserContext } from "../contexts/UserContexts"
 
 export default function ItemPage() {
     const {category, item} = useParams()
-    const url = `http://localhost:5000`
+    const url = process.env.REACT_APP_API_URL
 
     const { sessao } = useContext(UserContext)
     const [categorias, setCategorias] = useState([]);
@@ -37,21 +37,22 @@ export default function ItemPage() {
 		});
     }, [])
 
-function addItem(item){
-    if (sessao === null) {
-        return alert("Você precisa fazer login para adicionar itens ao carrinho")
-    } else {
-    const config = { headers: { Authorization: `Bearer ${sessao.token}` } }
-
-    const adicionarItem = axios.post(`${url}/home/cart`, item, config)
-    adicionarItem.then((res) => {
-console.log(res.data)
-alert(res.data)
-    })
-    adicionarItem.catch((err)=> {
-        console.log(err.response)
-    })
-}}
+    function addItem(item){
+        if (sessao === null) {
+            return alert("Você precisa fazer login para adicionar itens ao carrinho")
+        } else {
+        const config = { headers: { Authorization: `Bearer ${sessao.token}` } }
+            let newItem={...item}
+            newItem["quantity"]=1
+        const adicionarItem = axios.post(`${url}/home/cart`, newItem, config)
+        adicionarItem.then((res) => {
+    console.log(res.data)
+    alert(res.data)
+        })
+        adicionarItem.catch((err)=> {
+            console.log(err.response)
+        })
+    }} 
 
     return (
         <>

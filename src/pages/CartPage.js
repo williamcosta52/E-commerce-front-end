@@ -11,7 +11,7 @@ import { UserContext } from "../contexts/UserContexts";
 
 export default function CartPage() {
     const navigate = useNavigate();
-    const url = `http://localhost:5000`;
+    const url = process.env.REACT_APP_API_URL
 
 
 
@@ -69,7 +69,7 @@ function tirarItem(id){
 
                 </ProductBox>
                 <ProductsValue> Valor total: R$ {totalValue}</ProductsValue>
-                <div className="button buy">Comprar</div>
+                <div className="button buy" onClick={() => alert(`Parabéns! Sua compra de ${totalValue} foi realizada com sucesso!`)}>Comprar</div>
                 <div className="button browse"onClick={() => navigate("/home")}>Pegar mais itens</div>
 
             </CartBox>
@@ -81,7 +81,7 @@ display:flex;
 flex-direction: column;
 align-items: center;
 justify-content: end;
-background-color: grey;
+background-image: url(https://st4.depositphotos.com/9147252/24037/v/450/depositphotos_240371772-stock-illustration-vintage-black-background-floral-elements.jpg);
 height: 100vh;
 width: 100vw;
 `
@@ -92,7 +92,7 @@ display: flex;
 margin: auto;
 flex-direction: column;
 align-items: center;
-background:yellow;
+background:white;
 .top{
     width: 100%;
     display: flex;
@@ -119,12 +119,12 @@ background:yellow;
     border-radius:5px ;
 }
 .buy{    
-    background-color:orange;
+    background-color:gray;
 }
 .browse{
     box-sizing: border-box;
     background-color:white;
-    border:2px solid blue;
+    border:2px solid black;
 }
 `
 const ProductBox = styled.div`
@@ -134,6 +134,7 @@ height: 50%;
 display:flex;
 flex-direction: column;
 background-color: white;
+border: 1px solid black;
 overflow-y:scroll;
 `
 const ProductsValue = styled.div`
@@ -156,7 +157,7 @@ min-height: 150px;
     margin-top: 10px;
     .left{
         height: 100%;
-        background-color: red;
+        background-color: white;
     width: 50%;
     display:flex;
     flex-direction: column;
@@ -171,7 +172,7 @@ img{
     flex-direction: column;
     align-items: center; 
     justify-content: space-evenly;
-    background-color: aqua;
+    background-color: white;
     height: 100%;
     width: 50%;    
 }
