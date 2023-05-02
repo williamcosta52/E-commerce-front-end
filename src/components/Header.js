@@ -5,40 +5,51 @@ import van from "../assets/van.png"
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+
     const navigate = useNavigate();
+    function enterStore() {
+        navigate("/login");
+    }
+    function goHome() {
+        navigate("/home");
+    }
+    function goCart() {
+        navigate("/cart");
+    }
     return (
-        <HeaderStyled>
-            <img src={logo} onClick={() => navigate("/home")} alt=" Perigo Store logo" />
-            <input placeholder="Vasculhar" />
-            <img src={login} onClick={() => navigate("/login")} alt=" login icon" className="login-icon" />
-            <img src={van} onClick={() => navigate("/cart")} alt=" van icon" className="van-icon" />
-        </HeaderStyled>
+        <HeaderHome>
+        <ion-icon onClick={enterStore} name="person-outline"></ion-icon>
+            <h1 onClick={goHome}>PERIGO STORE</h1>
+            <ion-icon onClick={goCart} name="cart-outline"></ion-icon>
+        </HeaderHome>
     )
 }
 
-const HeaderStyled = styled.header`
-height: 120px;
-width: 100vw;
-display:flex;
+const HeaderHome = styled.header`
+display: flex;
+justify-content: space-evenly;
 align-items: center;
-justify-content: space-around;
-background-color: #D9D9D9;
-position: fixed;
-top: 0px;
-left: 0px;
-img{
-    height:80%;
+height: 100px;
+width: 100vw;
+background-color: black;
+border-bottom: 2px solid white;
+h1{
+	color: white;
+	font-size: 60px;
+	font-weight: 800;
+	transition-duration: 0.5s;
+	&:hover {
+      scale: 1.2;
+	  color: red;
+    }
+
 }
-input{
-    width: 40%;
-    height: 30%;
-    border-radius: 5px;
-    
-}
-.login-icon{
-    height: 44%;
-}
-.van-icon{
-    height: 35%; 
-}
-`
+ion-icon{
+	color: white;
+	font-size: 50px;
+	transition-duration: 0.5s;
+	&:hover {
+      scale: 1.3;
+	  color: red;
+    }
+}` 

@@ -12,7 +12,7 @@ export default function ItemPage() {
     const url = `http://localhost:5000`
 
     const { sessao } = useContext(UserContext)
-
+    const [categorias, setCategorias] = useState([]);
 
     const [categoria, setCategoria]=useState(category)
     const [itemBuscado, setItemBuscado] = useState({})
@@ -26,6 +26,15 @@ export default function ItemPage() {
         carregarItem.catch((err) => {
             console.log(err.response.data)
         })
+
+
+        const carregarLista = axios.get(`${url}/categories`);
+		carregarLista.then((res) => {
+			setCategorias(res.data);
+		});
+		carregarLista.catch((err) => {
+			console.log(err.response.data);
+		});
     }, [])
 
 function addItem(item){
@@ -47,6 +56,14 @@ alert(res.data)
     return (
         <>
             <Header />
+            <CategoriasContainer>
+					<ListaCategorias>
+						{categorias.map((categoria, i) => (
+							<Link to={`/categoria/${categoria.category}`}> <li key={i}>{categoria.category}</li></Link>
+						))}
+					</ListaCategorias>
+				</CategoriasContainer>
+
             <Main>
                 <ContainerImagem>
                     <img src={itemBuscado.image} />
@@ -54,7 +71,7 @@ alert(res.data)
                 <ContainerDetalhes>
                     <div>
                     <h1>
-                        <Link to={`/categoria/${categoria}`}> {categoria}</Link>
+                        
                         <br/>{itemBuscado.name}</h1>
                     </div>
                     <h2>RS{itemBuscado.price},00</h2>
@@ -69,30 +86,32 @@ alert(res.data)
 }
 
 const Main = styled.div`
-background-color: gray;
-margin-top: 120px;
+background-color: black;
 display: flex;
 justify-content: center;
 padding-top: 30px;
 width: 100vw;
 height: 100vh;
+font-family: 'Castoro Titling', cursive;
+font-family: 'IBM Plex Sans Arabic', sans-serif;
 `
 
 const ContainerImagem = styled.div`
-width: 30%;
+width: 35%;
 height: 50%;
 display: flex;
 justify-content: center;
 img{
     max-width: 90%;
     max-height: 90%;
+    border-radius: 15%;
 }
 `
 const ContainerDetalhes = styled.div`
 display: flex;
 flex-direction: column;
 width: 30%;
-height: 40%;
+height: 50%;
 div{
     height: 50px;
     width: 100%;
@@ -124,3 +143,31 @@ button{
     align-self: center;
 }
 `
+const CategoriasContainer = styled.div`
+	width: 100%;
+	height: 100px;
+	display: flex;
+	flex-direction: row;
+	overflow-x: auto;
+`;
+
+const ListaCategorias = styled.ul`
+	display: flex;
+	justify-content: space-around;
+	li {
+		color: white;
+		display: flex;
+		height: 100%;
+		min-width: 360px;
+		background-color: black;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid white;
+		font-weight: 500;
+	font-family: 'Castoro Titling', cursive;
+font-family: 'IBM Plex Sans Arabic', sans-serif;
+&:hover {
+      border: 2px solid red;
+    }
+	}
+`;

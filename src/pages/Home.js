@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ItemCard from "../components/ItemCard";
 
 //COLOCA AKI
@@ -32,13 +32,25 @@ export default function Home() {
 		});
 	}, []);
 
+	const navigate = useNavigate()
+	function enterStore() {
+		navigate("/login");
+	}
+	function goHome() {
+		navigate("/home");
+	}
+	function goCart() {
+		navigate("/cart");
+	}
+
+
 
 	return (
 		<PageContainer>
 			<HeaderHome>
-			<ion-icon name="person-outline"></ion-icon>
-				<h1>PERIGO STORE</h1>
-				<ion-icon name="cart-outline"></ion-icon>
+			<ion-icon onClick={enterStore} name="person-outline"></ion-icon>
+				<h1 onClick={goHome}>PERIGO STORE</h1>
+				<ion-icon onClick={goCart} name="cart-outline"></ion-icon>
 			</HeaderHome>
 
 
