@@ -30,6 +30,7 @@ margin-right: 10px;
 margin-bottom: 30px;
 background-color: white;
 align-items: center;
+opacity: 0.3;
 transition-duration: 0.5s;
 p{
     color: black;
@@ -40,6 +41,7 @@ p{
 &:hover {
       border: 3px solid red;
       scale: 1.1;
+      opacity: 1;
     }
 `
 

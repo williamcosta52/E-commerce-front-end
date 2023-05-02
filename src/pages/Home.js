@@ -97,6 +97,7 @@ align-items: center;
 height: 100px;
 width: 100vw;
 background-color: black;
+background-image: url(https://st4.depositphotos.com/9147252/24037/v/450/depositphotos_240371772-stock-illustration-vintage-black-background-floral-elements.jpg);
 border-bottom: 2px solid white;
 h1{
 	color: white;
@@ -137,6 +138,7 @@ background-color: black;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	
 `;
 
 const CategoriasContainer = styled.div`
@@ -185,13 +187,14 @@ const TodoEstoqueContainer = styled.div`
 	width: 80%;
 	min-height: max-content;
 	display: flex;
-	flex-direction: column;
+flex-direction: column;
 `;
 
 const DisplayContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
+
 `;
 
 /*const ItemCard = styled.div`

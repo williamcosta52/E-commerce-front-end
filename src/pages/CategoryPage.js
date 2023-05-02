@@ -11,12 +11,19 @@ export default function CategoryPage() {
     const url = `http://localhost:5000`
     const { category } = useParams()
     const [categoria] = useState(category)
-    const [flex, setFlex] = useState("none");
 
 	const [categorias, setCategorias] = useState([]);
     const [itensPorCategoria, setItensPorCategoria] = useState([])
 
     useEffect(() => {
+		const carregarLista = axios.get(`${url}/categories`);
+		carregarLista.then((res) => {
+			setCategorias(res.data);
+			console.log(res.data)
+		});
+		carregarLista.catch((err) => {
+			console.log(err.response.data);
+		});
         const carregarCategoria = axios.get(`${url}/categoria/${categoria}`)
         carregarCategoria.then((res) => {
             console.log(categoria)
@@ -26,13 +33,6 @@ export default function CategoryPage() {
             console.log(err.response.data)
         })
 
-        const carregarLista = axios.get(`${url}/categories`);
-		carregarLista.then((res) => {
-			setCategorias(res.data);
-		});
-		carregarLista.catch((err) => {
-			console.log(err.response.data);
-		});
     }, [])
 const navigate = useNavigate()
 function enterStore() {
@@ -43,6 +43,12 @@ function goHome() {
 }
 function goCart() {
 	navigate("/cart");
+}
+
+function goToThis(cat){
+	navigate(`/categoria/${cat}`)
+	console.log(`${cat}`)
+	window.location.reload(true)
 }
 
     return (
@@ -56,7 +62,7 @@ function goCart() {
             <CategoriasContainer>
 					<ListaCategorias>
 						{categorias.map((categoria, i) => (
-							<Link to={`/categoria/${categoria.category}`}> <li key={i}>{categoria.category}</li></Link>
+							<div onClick={()=>goToThis(categoria.category)}> <li key={i}>{categoria.category}</li></div>
 						))}
 					</ListaCategorias>
 				</CategoriasContainer>
@@ -85,6 +91,7 @@ const Main = styled.main`
 	height: 100vh;
 background-color: black;
 	display: flex;
+	
 	flex-direction: column;
 `
 
@@ -96,6 +103,7 @@ height: 100px;
 width: 100vw;
 background-color: black;
 border-bottom: 2px solid white;
+background-image: url(https://st4.depositphotos.com/9147252/24037/v/450/depositphotos_240371772-stock-illustration-vintage-black-background-floral-elements.jpg);
 h1{
 	color: white;
 	font-size: 60px;
@@ -137,6 +145,7 @@ display: flex;
 justify-content: space-evenly;
 flex-wrap: wrap;
 padding-top: 15px;
+
 `
 
 const CategoriasContainer = styled.div`
@@ -162,12 +171,13 @@ const ListaCategorias = styled.ul`
 		font-weight: 500;
 	font-family: 'Castoro Titling', cursive;
 font-family: 'IBM Plex Sans Arabic', sans-serif;
+transition-duration: 0.5s;
 &:hover {
+	scale: 1.2;
       border: 2px solid red;
     }
 	}
 `;
-
 
 const Título = styled.h1`
 	align-self: center;

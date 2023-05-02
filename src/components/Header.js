@@ -3,12 +3,20 @@ import logo from "../assets/logo.png"
 import login from "../assets/login.png"
 import van from "../assets/van.png"
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/UserContexts";
+import { useContext } from "react";
 
 export default function Header() {
 
+    const { sessao } = useContext(UserContext)
     const navigate = useNavigate();
     function enterStore() {
+        if (!sessao){
         navigate("/login");
+        } else {
+            navigate("/home");
+        }
+
     }
     function goHome() {
         navigate("/home");
@@ -33,6 +41,7 @@ height: 100px;
 width: 100vw;
 background-color: black;
 border-bottom: 2px solid white;
+background-image: url(https://st4.depositphotos.com/9147252/24037/v/450/depositphotos_240371772-stock-illustration-vintage-black-background-floral-elements.jpg);
 h1{
 	color: white;
 	font-size: 60px;
